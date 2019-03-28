@@ -1,6 +1,8 @@
 # QuiziCool
 Quiz site created for CSCI 366 Database Systems Project
 
-To build the site, copy the QuiziCool folder to your host site. The Database_Init file is outside of aformentioned folder. This Database_Init file should be run on your sql database site to initialize all the tables for the site to work. 
+To build the site, first enter the QuiziCool angular project directory in the terminal and run "ng build --prod". This should create a production version of the project in a dist folder on your computer.
 
-Once you have copied the QuiziCool Angular project to your host site, run npm install to install all necessary dependencies. Finally, use ng serve to launch the site.
+Move the contents of the dist folder to the host site you're running on.
+
+The host site is currently set to run on "http://students.cs.ndsu.nodak.edu/~wyandrew/Database_Systems/QuiziCool/". If you would like to build to a different site, then enter the src < index.html file and readjust the href element in the base tag before running ng build. 
