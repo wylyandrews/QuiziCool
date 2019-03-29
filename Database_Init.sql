@@ -1,4 +1,9 @@
--- sql page for creating the QuiziCool Database --
+-- QuiziCool											--
+-- A database project									--
+-- Wyly Andrews, Riley Abrahamson, and Dawson Coleman	--
+-- sql page for creating the QuiziCool Database tables	--
+-- Created on:			March 28, 2019					--
+-- Last updated on:		March 28, 2019					--
 
 DROP TABLE questions;
 CREATE TABLE questions (
@@ -25,7 +30,7 @@ score INT NOT NULL
 
 DROP TABLE categories;
 CREATE TABLE categories (
-categoryID INT NOT NULL PRIMARY KEY,
+categoryID SERIAL NOT NULL PRIMARY KEY,
 creatorID INT NOT NULL,
 catDescription TEXT NOT NULL,
 totalScore INT NOT NULL
@@ -33,11 +38,11 @@ totalScore INT NOT NULL
 
 DROP TABLE players;
 CREATE TABLE players (
-playerID INT NOT NULL PRIMARY KEY,
+playerID SERIAL NOT NULL PRIMARY KEY,
 username VARCHAR(20) NOT NULL,
-score INT NOT NULL,
-correctAnswers INT NOT NULL,
-totalAnswers INT NOT NULL
+score INT NOT NULL DEFAULT 0,
+correctAnswers INT NOT NULL DEFAULT 0,
+totalAnswers INT NOT NULL DEFAULT 0
 );
 
 DROP TABLE scores;
