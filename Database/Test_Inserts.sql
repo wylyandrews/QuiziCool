@@ -1,9 +1,9 @@
-﻿-- QuiziCool --
--- A database project --
+-- QuiziCool                                          --
+-- A database project                                 --
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
--- sql page for inserting test data	 --
--- Created on:  March 28, 2019 --
--- Last updated on:  April 11, 2019 --
+-- sql page for inserting test data	                  --
+-- Created on:       March 28, 2019                   --
+-- Last updated on:  April 12, 2019                   --
 
 DELETE FROM questions;
 DELETE FROM questionChoices;
@@ -27,7 +27,7 @@ INSERT INTO difficulties( difficultyLevel, score )
 -- end fail --
 
 INSERT INTO categories ( categoryName, creatorID, categoryDescription, totalScore )
-				VALUES ( 'Test Category', (SELECT playerID FROM players WHERE username = 'QuizBot'), 'Good luck on your quiz!', 100 );
+				VALUES ( 'Test Category', (SELECT playerID FROM players WHERE username = 'QuizBot'), 'Good luck on your quiz!', 0 );
 
 INSERT INTO questions ( content, answer, categoryID, difficultyLevel )
 			   VALUES ( 'Which choice is choice B?', 'B', (SELECT categoryID FROM categories WHERE categoryName = 'Test Category'), 0 );
@@ -43,7 +43,7 @@ INSERT INTO questionChoices ( questionID, letter, choice )
 --					 VALUES ( 1, 'E', 'Error E' );
 -- end fail --
 
--- right now, this works, but we should implement constraints to make this fail ( invalid total answers, too many ) --
+-- right now, this works, but we should implement constraints to make this fail ( invalid total answers, too many, too high a score... ) --
 INSERT INTO scores ( playerID, categoryID, score, correctAnswers, totalAnswers )
 			VALUES ( (SELECT playerID FROM players WHERE username = 'QuizBot'),
 					 (SELECT categoryID FROM categories WHERE categoryName = 'Test Category'),
