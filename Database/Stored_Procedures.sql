@@ -78,8 +78,6 @@ BEGIN
 			SET score = new_score,
 				correctAnswers = new_correct
 			WHERE playerID = pID AND categoryID = cID;
-		/*INSERT INTO scores ( playerID, categoryID, score, correctAnswers, totalAnswers )
-					VALUES ( pID, cID, score, correct, total_questions );*/
 	END IF;
 
 END;
