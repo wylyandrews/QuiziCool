@@ -7,5 +7,6 @@
 
 \i 'E:/Users/gandr/Documents/GitHub/QuiziCool/Database/Database_Init.sql';
 \i 'E:/Users/gandr/Documents/GitHub/QuiziCool/Database/Stored_Procedures.sql';
+\i 'E:/Users/gandr/Documents/GitHub/QuiziCool/Database/triggers.sql';
 \i 'E:/Users/gandr/Documents/GitHub/QuiziCool/Database/Test_Inserts.sql';
 \i 'E:/Users/gandr/Documents/GitHub/QuiziCool/Database/Test_Procedure_Calls.sql';

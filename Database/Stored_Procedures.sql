@@ -56,3 +56,51 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';*/
+
+DROP PROCEDURE IF EXISTS new_score;
+CREATE OR REPLACE PROCEDURE new_score( pID INT, cID INT, new_score INT, new_correct INT )
+AS $$
+DECLARE
+	old_score INT;
+	old_correct INT;
+	total_questions INT;
+BEGIN
+	SELECT INTO total_questions questions
+		FROM categories
+		WHERE categories.categoryID = cID;
+
+	SELECT INTO old_score scores.score, old_correct correctAnswers
+		FROM scores
+		WHERE scores.playerID = pID AND scores.categoryID = cID;
+
+	IF new_score > old_score OR ( new_score = old_score AND new_correct > old_correct ) THEN
+		UPDATE scores
+			SET score = new_score,
+				correctAnswers = new_correct
+			WHERE playerID = pID AND categoryID = cID;
+		/*INSERT INTO scores ( playerID, categoryID, score, correctAnswers, totalAnswers )
+					VALUES ( pID, cID, score, correct, total_questions );*/
+	END IF;
+
+END;
+$$
+LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS increment_question_count();
+CREATE OR REPLACE FUNCTION increment_question_count() RETURNS TRIGGER AS $_$
+DECLARE
+	question_count INT;
+BEGIN
+	SELECT INTO question_count questions
+		FROM categories
+		WHERE categories.categoryID = NEW.categoryID;
+
+	question_count := question_count + 1;
+
+	UPDATE categories
+	SET questions = question_count
+	WHERE categories.categoryID = NEW.categoryID;
+
+	RETURN NEW;
+END;
+$_$ LANGUAGE 'plpgsql';
