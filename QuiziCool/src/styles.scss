@@ -1,0 +1,34 @@
+* {
+    border: 0px;
+    margin: 0px;
+    text-decoration: none;
+}
+
+body {
+    background: #0a0a09 url(http://www.transparenttextures.com/patterns/inspiration-geometry.png) repeat 0 0;
+
+    -webkit-animation: slide 20s linear infinite;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+}
+
+a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 400px; }
+}
