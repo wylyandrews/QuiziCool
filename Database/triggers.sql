@@ -1,3 +1,9 @@
+-- QuiziCool                                          --
+-- A database project                                 --
+-- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
+-- sql page for creating triggers	                  --
+-- Created on:       April 16, 2019                   --
+-- Last updated on:  April 16, 2019                   --
 
 CREATE  TRIGGER trig_questions_insert
 AFTER INSERT

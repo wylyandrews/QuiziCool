@@ -3,7 +3,7 @@
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
 -- sql file for creating stored procedures            --
 -- Created on:       April 12, 2019                   --
--- Last updated on:  April 12, 2019                   --
+-- Last updated on:  April 16, 2019                   --
 
 DROP PROCEDURE IF EXISTS generate_question;
 CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_name TEXT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
