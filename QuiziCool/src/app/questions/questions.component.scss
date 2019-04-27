@@ -1,0 +1,13 @@
+.question-categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.test {
+    height: 200px;
+    width: 500px;
+    margin: 10px;
+
+    border: 1px red dashed;
+}

@@ -1,0 +1,17 @@
+.question-categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.test {
+  height: 200px;
+  width: 500px;
+  margin: 10px;
+  border: 1px red dashed;
+}
+/*# sourceMappingURL=questions.component.css.map */
