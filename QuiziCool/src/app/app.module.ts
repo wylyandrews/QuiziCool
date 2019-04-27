@@ -7,6 +7,9 @@ import { QuestionsHeaderComponent } from './questions-header/questions-header.co
 import { AppRoutingModule } from './app-routing.module';
 import { QuestionsComponent } from './questions/questions.component';
 import { PlayComponent } from './play/play.component';
+import { PlayQuestionsColumnComponent } from './play-questions-column/play-questions-column.component';
+import { PlayAnswersComponent } from './play-answers/play-answers.component';
+import { PlayScoreComponent } from './play-score/play-score.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { PlayComponent } from './play/play.component';
     HomeComponent,
     QuestionsHeaderComponent,
     QuestionsComponent,
-    PlayComponent
+    PlayComponent,
+    PlayQuestionsColumnComponent,
+    PlayAnswersComponent,
+    PlayScoreComponent
   ],
   imports: [
     BrowserModule,

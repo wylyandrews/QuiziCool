@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACZ,SAAS,EAAE,MAAM;CAIpB;;AAHG,MAAM,EAAE,SAAS,EAAE,QAAQ;EAF/B,AAAA,eAAe,CAAC;IAGR,SAAS,EAAG,IAAI;GAEvB;;;AAED,AAAA,WAAW,CAAC;EACR,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,GAAG;CAClB;;AAED,AAAA,WAAW,AAAA,MAAM,EAAE,WAAW,AAAA,MAAM,EAAE,WAAW,AAAA,OAAO,CAAC;EACrD,OAAO,EAAE,IAAI;CAChB;;AAED,AAAA,eAAe,AAAA,UAAW,CAAA,EAAE,EAAE;EAC1B,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "play-questions-column.component.scss"
+    ],
+    "names": [],
+    "file": "play-questions-column.component.css"
+}

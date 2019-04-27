@@ -1,0 +1,49 @@
+.play-answers-gameboard {
+  border-radius: 3px;
+  border: 1px rgba(10, 10, 10, 0.514) solid;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  background-color: #ff7e25;
+  background-image: linear-gradient(58deg, #ff7e25 0%, #ffcc00 82%);
+  width: 100%;
+  height: 100%;
+  color: #0f0f0f;
+  font-size: 1.2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.question-text {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.question-submit {
+  margin: 4px;
+}
+
+#questionSubmissionLetter {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.question-submit-button {
+  background-color: #3ea815;
+  background-image: linear-gradient(66deg, #3ea815 0%, #006633 84%);
+  color: #f0f0f0;
+}
+
+.question-submit-button:hover, .question-submit-button:focus, .question-submit-button:active {
+  opacity: 0.85;
+  border-color: #0f0f0f;
+}
+/*# sourceMappingURL=play-answers.component.css.map */

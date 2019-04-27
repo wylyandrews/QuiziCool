@@ -5,20 +5,22 @@
 }
 
 .tile-row {
-    height: 50vh;
+    //height: 50vh;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .home-tile {
-    width: 50vh;
-    height: 50vh;
+    width: 48vh;
+    height: 48vh;
     border-radius: 3px;
     border: 1px rgba(10, 10, 10, 0.514) solid;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
     box-shadow: 0 0 10px rgba(0,0,0,.4);
+
+    margin-top: 8px;
 
     display: flex;
     align-items: center;

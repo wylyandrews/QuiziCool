@@ -1,0 +1,23 @@
+.question-stats {
+  font-size: 2.6rem;
+}
+
+@media (max-width: 991.98px) {
+  .question-stats {
+    font-size: 2rem;
+  }
+}
+
+.back-arrow {
+  height: 5vh;
+  margin-top: 8px;
+}
+
+.back-arrow:hover, .back-arrow:focus, .back-arrow:active {
+  opacity: 0.85;
+}
+
+.question-stats:nth-child(2n) {
+  text-align: right;
+}
+/*# sourceMappingURL=play-questions-column.component.css.map */

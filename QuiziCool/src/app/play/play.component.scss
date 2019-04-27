@@ -1,0 +1,24 @@
+.play-col {
+    height: 100vh;
+    display: flex;
+}
+
+.wide-play-col {
+    width: 100%;
+}
+
+.play-col:nth-child(2) {
+    height: 100vh;
+
+    @media (max-width: 991.98px) {
+        height: 95vh;
+    }
+}
+
+.play-col:nth-child(2n + 1) {
+    height: 100vh;
+
+    @media (max-width: 991.98px) {
+        height: auto;
+    }
+}

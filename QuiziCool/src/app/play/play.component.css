@@ -1,0 +1,31 @@
+.play-col {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wide-play-col {
+  width: 100%;
+}
+
+.play-col:nth-child(2) {
+  height: 100vh;
+}
+
+@media (max-width: 991.98px) {
+  .play-col:nth-child(2) {
+    height: 95vh;
+  }
+}
+
+.play-col:nth-child(2n + 1) {
+  height: 100vh;
+}
+
+@media (max-width: 991.98px) {
+  .play-col:nth-child(2n + 1) {
+    height: auto;
+  }
+}
+/*# sourceMappingURL=play.component.css.map */

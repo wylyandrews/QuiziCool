@@ -1,0 +1,39 @@
+.play-scores-container {
+  width: 100%;
+}
+
+.score-stats {
+  font-size: 2.6rem;
+}
+
+@media (max-width: 991.98px) {
+  .score-stats {
+    font-size: 2rem;
+  }
+}
+
+.score {
+  text-align: right;
+}
+
+.time {
+  font-size: 3.3rem;
+}
+
+@media (max-width: 991.98px) {
+  .time {
+    font-size: 2.8rem;
+  }
+}
+
+.time-count {
+  text-align: center;
+  font-size: 3rem;
+}
+
+@media (max-width: 991.98px) {
+  .time-count {
+    font-size: 2.4rem;
+  }
+}
+/*# sourceMappingURL=play-score.component.css.map */
