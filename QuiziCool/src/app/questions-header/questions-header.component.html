@@ -6,49 +6,41 @@
     <button class="question-button" data-toggle="modal" data-target="#addModal">
       Add Questions
     </button>
-    <button class="question-button" data-toggle="modal" data-target="#deleteModal">
-      Delete Questions
-    </button>
   </div>
 </div>
 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Questions</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       
+        <h5>Question Content</h5>
+        <textarea class="form-control" id="addQuestionContent" rows="5"></textarea>
+        <h5>Question Answer</h5>
+        <select class="custom-select" id="addQuestionLetter">
+          <option selected>Choose...</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+        <h5>Question Category</h5>
+        <input class="form-control" type="text" id="addQuestionCategory">
+        <h5>Question Difficulty</h5>
+        <select class="custom-select" id="addQuestionDiff">
+            <option selected>Choose...</option>
+            <option value="1">1 (10 Points)</option>
+            <option value="2">2 (20 Points)</option>
+          </select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary mod-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary mod-btn">Save Changes</button>
       </div>
     </div>
   </div>

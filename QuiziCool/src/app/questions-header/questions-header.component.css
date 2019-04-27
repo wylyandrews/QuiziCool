@@ -36,8 +36,8 @@
 
 .question-button {
   height: 5vh;
-  width: 10vw;
-  background-color: yellow;
+  background-color: #ff7e25;
+  background-image: linear-gradient(58deg, #ff7e25 0%, #ffcc00 72%);
   border: 1px rgba(10, 10, 10, 0.514) solid;
   margin: 0 5px;
   font-size: 1em;
@@ -46,5 +46,28 @@
 
 .question-button:hover, .question-button:focus, .question-button:active {
   border: 2px #0f0f0f solid;
+}
+
+.modal-content {
+  background-color: #0f0f0f;
+}
+
+.close {
+  color: #f0f0f0;
+}
+
+.modal-header, .modal-footer {
+  border-color: #4f4f4f;
+}
+
+.mod-btn {
+  border: 1px rgba(10, 10, 10, 0.514) solid;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background-color: #ff7e25;
+  background-image: linear-gradient(58deg, #ff7e25 0%, #ffcc00 82%);
+  color: #0f0f0f;
 }
 /*# sourceMappingURL=questions-header.component.css.map */
