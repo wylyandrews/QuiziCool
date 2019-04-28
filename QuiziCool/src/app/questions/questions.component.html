@@ -1,11 +1,15 @@
 <app-questions-header></app-questions-header>
 
 <div class="container-fluid question-categories">
-    <div class="test" *ngFor='let listing of questionsList'>
-        <h2>{{listing.categoryName}}</h2>
-        {{listing.username}}
+    <div class="container question-listing" *ngFor='let listing of questionsList'>
+        <div class="row">
+            <h2 class="col-3">{{listing.categoryName}}</h2>
+            <div class="col-6"></div>
+            <div class="col-3"><button class="delete-listing-button">X</button></div>
+        </div>
+        <h4 class="listing-author">{{listing.username}}</h4>
         <p>{{listing.categoryDesc}}</p>
-        <h3>{{listing.questionCount}} QUESTIONS</h3>
-        <button>X</button>
+        <h3 class="listing-question-count-row"><div class="listing-question-count">{{listing.questionCount}}</div> QUESTIONS</h3>
+        
     </div>
 </div>
