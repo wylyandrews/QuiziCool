@@ -3,7 +3,7 @@
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
 -- sql file for creating stored procedures            --
 -- Created on:       April 12, 2019                   --
--- Last updated on:  April 16, 2019                   --
+-- Last updated on:  April 29, 2019                   --
 
 DROP PROCEDURE IF EXISTS generate_category;
 CREATE OR REPLACE PROCEDURE generate_category( category_name TEXT, player_name VARCHAR(20), description TEXT)
