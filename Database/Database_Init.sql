@@ -34,7 +34,7 @@ categoryID SERIAL NOT NULL PRIMARY KEY,
 categoryName TEXT NOT NULL UNIQUE,
 creatorID INT NOT NULL,
 categoryDescription TEXT,
-totalScore INT NOT NULL,
+totalScore INT NOT NULL DEFAULT 0,
 questions INT NOT NULL DEFAULT 0
 );
 
