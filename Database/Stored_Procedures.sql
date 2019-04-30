@@ -3,10 +3,25 @@
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
 -- sql file for creating stored procedures            --
 -- Created on:       April 12, 2019                   --
--- Last updated on:  April 16, 2019                   --
+-- Last updated on:  April 29, 2019                   --
+
+DROP PROCEDURE IF EXISTS generate_category;
+CREATE OR REPLACE PROCEDURE generate_category( category_name TEXT, player_name VARCHAR(20), description TEXT)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+	player_id INT;
+BEGIN
+	SELECT INTO player_id playerID FROM players
+	WHERE username = player_name;
+
+	INSERT INTO categories ( categoryName, creatorID, categoryDescription )
+				VALUES ( category_name, player_id, description );
+END;
+$$;
 
 DROP PROCEDURE IF EXISTS generate_question;
-CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_name TEXT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
+CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_id INT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
 LANGUAGE plpgsql
 AS $$
 DECLARE
@@ -14,12 +29,11 @@ DECLARE
 	new_question_score INT;
 	new_category_score INT;
 BEGIN
-
 	SELECT INTO new_question_id MAX(questionID) FROM questions;
 	new_question_id := new_question_id + 1;
 
 	INSERT INTO questions ( content, answer, categoryID, difficultyLevel )
-			   VALUES ( question_name, answer, (SELECT categoryID FROM categories WHERE categoryName = category_name), diff );
+			   VALUES ( question_name, answer, category_id, diff );
 
 	INSERT INTO questionChoices ( questionID, letter, choice )
 					 VALUES ( new_question_id, 'A', c_a ),
@@ -33,29 +47,32 @@ BEGIN
 
 	SELECT INTO new_category_score totalScore
 		FROM categories
-		WHERE categoryName = category_name;
+		WHERE categoryId = category_id;
 
 	new_category_score = new_category_score + new_question_score;
 
 	UPDATE categories
 		SET totalScore = new_category_score
-		WHERE categoryName = category_name;
+		WHERE categoryID = category_id;
 
 END;
 $$;
 
-/* -- example function code
-DROP FUNCTION IF EXISTS show_all_tables;
-CREATE OR REPLACE FUNCTION show_all_tables( )
-RETURNS TABLE (
-	questionID INT
-)
+DROP PROCEDURE IF EXISTS generate_question;
+CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_name TEXT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
+LANGUAGE plpgsql
 AS $$
+DECLARE
+	category_id INT;
 BEGIN
-	RETURN QUERY SELECT questions.questionID FROM questions;
+	SELECT INTO category_id categoryID
+	FROM categories
+	WHERE categoryName = categor_name;
+
+	generate_question( question_name, answer, category_id, diff, c_a, c_b, c_c, c_d );
+
 END;
-$$
-LANGUAGE 'plpgsql';*/
+$$;
 
 DROP PROCEDURE IF EXISTS new_score;
 CREATE OR REPLACE PROCEDURE new_score( pID INT, cID INT, new_score INT, new_correct INT )
@@ -83,6 +100,9 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';
+
+
+------------- FUNCTIONS -----------
 
 DROP FUNCTION IF EXISTS increment_question_count();
 CREATE OR REPLACE FUNCTION increment_question_count() RETURNS TRIGGER AS $_$

@@ -3,7 +3,7 @@
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman  --
 -- sql page for creating the QuiziCool Database tables --
 -- Created on:       March 28, 2019                    --
--- Last updated on:	 April 12, 2019                    --
+-- Last updated on:	 April 29, 2019                    --
 
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
@@ -34,7 +34,7 @@ categoryID SERIAL NOT NULL PRIMARY KEY,
 categoryName TEXT NOT NULL UNIQUE,
 creatorID INT NOT NULL,
 categoryDescription TEXT,
-totalScore INT NOT NULL,
+totalScore INT NOT NULL DEFAULT 0,
 questions INT NOT NULL DEFAULT 0
 );
 

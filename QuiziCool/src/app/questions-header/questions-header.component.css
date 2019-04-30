@@ -7,12 +7,24 @@
   border: 1px rgba(10, 10, 10, 0.514) solid;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  position: fixed;
-  top: 0;
+}
+
+.q-header-title {
+  display: inline-block;
+  color: #0f0f0f;
+  margin: 0.5rem 0 0 2vw;
+  font-size: 2rem;
+}
+
+@media (max-width: 991.98px) {
+  .q-header-title {
+    font-size: 1.4rem;
+  }
 }
 
 .back-arrow {
   height: 100%;
+  margin-top: -8px;
 }
 
 .back-arrow:hover, .back-arrow:focus, .back-arrow:active {
