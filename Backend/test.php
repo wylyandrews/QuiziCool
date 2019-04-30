@@ -1,6 +1,8 @@
 <?php
 
-$dbcon = pg_connect('host=isilo.db.elephantsql.com port=5432 dbname=uqyvztel user=uqyvztel password=fPnxEhQQJnHhEKWMWLkM39fiYIv8FP8w');
+include 'db.php';
+
+//Anything with options should use pg_query params to avoid SQL injection attacks
 $result = pg_query($dbcon, 'SELECT * FROM questions');
 $i = pg_num_fields($result);
 
