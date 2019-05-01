@@ -3,7 +3,7 @@
 -- Wyly Andrews, Riley Abrahamson, and Dawson Coleman --
 -- sql file for creating stored procedures            --
 -- Created on:       April 12, 2019                   --
--- Last updated on:  April 29, 2019                   --
+-- Last updated on:  April 30, 2019                   --
 
 DROP PROCEDURE IF EXISTS generate_category;
 CREATE OR REPLACE PROCEDURE generate_category( category_name TEXT, player_name VARCHAR(20), description TEXT)
@@ -110,24 +110,6 @@ LANGUAGE 'plpgsql';
 
 ------------- FUNCTIONS -----------
 
-DROP FUNCTION IF EXISTS increment_question_count();
-CREATE OR REPLACE FUNCTION increment_question_count() RETURNS TRIGGER AS $_$
-DECLARE
-	question_count INT;
-BEGIN
-	SELECT INTO question_count questions
-		FROM categories
-		WHERE categories.categoryID = NEW.categoryID;
-
-	question_count := question_count + 1;
-
-	UPDATE categories
-	SET questions = question_count
-	WHERE categories.categoryID = NEW.categoryID;
-
-	RETURN NEW;
-END;
-$_$ LANGUAGE 'plpgsql';
 
 DROP FUNCTION IF EXISTS check_legal_scores();
 CREATE OR REPLACE FUNCTION check_legal_scores() RETURNS TRIGGER AS $_$
@@ -152,5 +134,55 @@ BEGIN
 		RAISE NOTICE '% is an invalid score. Rejecting insert...', NEW;
 		RETURN NULL;
 	END IF;
+END;
+$_$ LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS increment_question_count();
+CREATE OR REPLACE FUNCTION increment_question_count() RETURNS TRIGGER AS $_$
+DECLARE
+	question_count INT;
+BEGIN
+	SELECT INTO question_count questions
+		FROM categories
+		WHERE categories.categoryID = NEW.categoryID;
+
+	question_count := question_count + 1;
+
+	UPDATE categories
+	SET questions = question_count
+	WHERE categories.categoryID = NEW.categoryID;
+
+	RETURN NEW;
+END;
+$_$ LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS remove_all_from_category();
+CREATE OR REPLACE FUNCTION remove_all_from_category() RETURNS TRIGGER AS $_$
+BEGIN
+	DELETE FROM questions
+		WHERE OLD.categoryID = questions.categoryID;
+	DELETE FROM scores
+		WHERE OLD.categoryID = scores.categoryID;
+	RETURN OLD;
+END;
+$_$ LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS remove_all_from_player();
+CREATE OR REPLACE FUNCTION remove_all_from_player() RETURNS TRIGGER AS $_$
+BEGIN
+	DELETE FROM categories
+		WHERE OLD.playerID = categories.creatorID;
+	DELETE FROM scores
+		WHERE OLD.playerID = scores.playerID;
+	RETURN OLD;
+END;
+$_$ LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS remove_choices_from_question();
+CREATE OR REPLACE FUNCTION remove_choices_from_question() RETURNS TRIGGER AS $_$
+BEGIN
+	DELETE FROM questionChoices
+		WHERE OLD.questionID = questionChoices.questionID;
+	RETURN OLD;
 END;
 $_$ LANGUAGE 'plpgsql';
