@@ -26,6 +26,9 @@
 
 .question-submit {
     margin: 4px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
 }
 
 #questionSubmissionLetter {
@@ -37,6 +40,11 @@
     background-color: #3ea815;
     background-image: linear-gradient(66deg, #3ea815 0%, #006633 84%);
     color: #f0f0f0;
+    width: 20%;
+    height: 45px;
+    margin: 5px;
+    border-radius: 4px;
+    font-size: 1.4rem;
 }
 
 .question-submit-button:hover, .question-submit-button:focus, .question-submit-button:active {
