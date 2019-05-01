@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from '../db.service'
+
+import { QuestionListing } from "../questionListing";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  questionsList: QuestionListing[];
+
+  constructor(private db: DbService) { }
 
   ngOnInit() {
+    this.db.getCategories().subscribe(categories => this.questionsList = categories);
   }
 
 }

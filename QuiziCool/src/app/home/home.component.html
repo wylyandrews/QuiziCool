@@ -34,8 +34,7 @@
         <h5>Select Quiz</h5>
         <select class="custom-select" id="categorySelection">
           <option selected>Choose...</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
+          <option *ngFor="let cat of questionsList" value={{cat.categoryid}}>{{cat.categoryname}}</option>
         </select>
       </div>
       <div class="modal-footer">
