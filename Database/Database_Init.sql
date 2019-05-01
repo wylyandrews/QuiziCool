@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
 questionID SERIAL NOT NULL PRIMARY KEY,
 content TEXT NOT NULL,
-answer VARCHAR(1) NOT NULL,  CONSTRAINT answer_choices CHECK (answer IN ('A', 'B', 'C', 'D')),
+answer CHAR(1) NOT NULL,  CONSTRAINT answer_choices CHECK (answer IN ('A', 'B', 'C', 'D')),
 categoryID INT NOT NULL,
 difficultyLevel INT NOT NULL
 );
@@ -41,10 +41,7 @@ questions INT NOT NULL DEFAULT 0
 DROP TABLE IF EXISTS players;
 CREATE TABLE players (
 playerID SERIAL NOT NULL PRIMARY KEY,
-username VARCHAR(20) NOT NULL UNIQUE,
-score INT NOT NULL DEFAULT 0,
-correctAnswers INT NOT NULL DEFAULT 0,
-totalAnswers INT NOT NULL DEFAULT 0
+username VARCHAR(20) NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS scores;
