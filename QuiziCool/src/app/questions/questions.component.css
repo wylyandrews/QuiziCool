@@ -2,8 +2,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -11,7 +12,7 @@
 .question-listing {
   min-height: 200px;
   width: 500px;
-  margin: 10px;
+  margin: 20px 10px;
   border-radius: 3px;
   border: 1px rgba(10, 10, 10, 0.514) solid;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);

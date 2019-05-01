@@ -38,6 +38,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 4em;
+  cursor: pointer;
 }
 
 .home-tile:hover {
@@ -52,5 +53,28 @@
 #questions-tile {
   background-color: #ff7e25;
   background-image: linear-gradient(58deg, #ff7e25 0%, #ffcc00 82%);
+}
+
+.modal-content {
+  background-color: #0f0f0f;
+}
+
+.close {
+  color: #f0f0f0;
+}
+
+.modal-header, .modal-footer {
+  border-color: #4f4f4f;
+}
+
+.mod-btn {
+  border: 1px rgba(10, 10, 10, 0.514) solid;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background-color: #3ea815;
+  background-image: linear-gradient(66deg, #3ea815 0%, #006633 84%);
+  color: #0f0f0f;
 }
 /*# sourceMappingURL=home.component.css.map */

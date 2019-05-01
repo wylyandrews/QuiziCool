@@ -3,8 +3,8 @@
 <div class="container-fluid question-categories">
     <div class="container question-listing" *ngFor='let listing of questionsList'>
         <div class="row">
-            <h2 class="col-3">{{listing.categoryname}}</h2>
-            <div class="col-6"></div>
+            <h2 class="col-6">{{listing.categoryname}}</h2>
+            <div class="col-3"></div>
             <div class="col-3"><button class="delete-listing-button">X</button></div>
         </div>
         <h4 class="listing-author">{{listing.username}}</h4>
