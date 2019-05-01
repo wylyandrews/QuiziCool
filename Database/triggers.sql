@@ -10,3 +10,9 @@ AFTER INSERT
 ON questions
 FOR EACH ROW
 EXECUTE PROCEDURE increment_question_count();
+
+CREATE TRIGGER trig_score_insert
+BEFORE INSERT
+ON scores
+FOR EACH ROW
+EXECUTE PROCEDURE check_legal_scores();
