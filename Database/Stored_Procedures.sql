@@ -131,11 +131,12 @@ BEGIN
 	THEN
 		RETURN NEW;
 	ELSE
-		RAISE NOTICE '% is an invalid score. Rejecting insert...', NEW;
+		-- RAISE NOTICE '% is an invalid score. Rejecting insert...', NEW;
 		RETURN NULL;
 	END IF;
 END;
 $_$ LANGUAGE 'plpgsql';
+
 
 DROP FUNCTION IF EXISTS increment_question_count();
 CREATE OR REPLACE FUNCTION increment_question_count() RETURNS TRIGGER AS $_$
@@ -180,9 +181,40 @@ $_$ LANGUAGE 'plpgsql';
 
 DROP FUNCTION IF EXISTS remove_choices_from_question();
 CREATE OR REPLACE FUNCTION remove_choices_from_question() RETURNS TRIGGER AS $_$
+DECLARE
+	category_score INT;
+	question_count INT;
+	question_score INT;
 BEGIN
+	RAISE NOTICE '% is the OLD', OLD;
+	RAISE NOTICE '% is the OLD.categoryID', OLD.categoryID;
+	SELECT INTO category_score totalScore
+		FROM categories
+		WHERE categories.categoryID = OLD.categoryID;
+
+	SELECT INTO question_count questions
+		FROM categories
+		WHERE categories.categoryID = OLD.categoryID;
+
+	SELECT INTO question_score score
+		FROM difficulties
+		WHERE difficulties.difficultyLevel = OLD.difficultyLevel;
+
+	RAISE NOTICE '% is the question_count', question_count;
+	RAISE NOTICE '% is the category_score', category_score;
+	RAISE NOTICE '% is the question_score', question_score;
+
+	category_score := category_score - question_score;
+	question_count := question_count - 1;
+
+	UPDATE categories
+		SET questions = question_count,
+			totalScore = category_score
+		WHERE categories.categoryID = OLD.categoryID;
+
 	DELETE FROM questionChoices
 		WHERE OLD.questionID = questionChoices.questionID;
+	
 	RETURN OLD;
 END;
 $_$ LANGUAGE 'plpgsql';

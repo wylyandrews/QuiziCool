@@ -5,7 +5,7 @@
 -- Created on:       April 16, 2019                   --
 -- Last updated on:  April 30, 2019                   --
 
-CREATE  TRIGGER trig_questions_insert
+CREATE  TRIGGER trig_question_insert
 AFTER INSERT
 ON questions
 FOR EACH ROW
@@ -18,7 +18,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE check_legal_scores();
 
 CREATE TRIGGER trig_category_delete
-BEFORE DELETE
+AFTER DELETE
 ON categories
 FOR EACH ROW
 EXECUTE PROCEDURE remove_all_from_category();
