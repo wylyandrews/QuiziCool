@@ -20,7 +20,6 @@ BEGIN
 END;
 $$;
 
-DROP PROCEDURE IF EXISTS generate_question;
 CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_id INT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
 LANGUAGE plpgsql
 AS $$
@@ -58,7 +57,6 @@ BEGIN
 END;
 $$;
 
-DROP PROCEDURE IF EXISTS generate_question;
 CREATE OR REPLACE PROCEDURE generate_question( question_name TEXT, answer CHAR(1), category_name TEXT, diff INT, c_a TEXT, c_b TEXT, c_c TEXT, c_d TEXT )
 LANGUAGE plpgsql
 AS $$
@@ -67,9 +65,9 @@ DECLARE
 BEGIN
 	SELECT INTO category_id categoryID
 	FROM categories
-	WHERE categoryName = categor_name;
+	WHERE categoryName = category_name;
 
-	generate_question( question_name, answer, category_id, diff, c_a, c_b, c_c, c_d );
+	CALL generate_question( question_name, answer, category_id, diff, c_a, c_b, c_c, c_d );
 
 END;
 $$;
@@ -90,13 +88,21 @@ BEGIN
 		FROM scores
 		WHERE scores.playerID = pID AND scores.categoryID = cID;
 
-	IF new_score > old_score OR ( new_score = old_score AND new_correct > old_correct ) THEN
-		UPDATE scores
-			SET score = new_score,
-				correctAnswers = new_correct
-			WHERE playerID = pID AND categoryID = cID;
-	END IF;
+	IF old_score IS NULL THEN
+		-- RAISE NOTICE 'old_score (%) = NULL. Inserting new score...', old_score;
+		
+		INSERT INTO scores ( playerID, categoryID, score, correctAnswers, totalAnswers )
+			VALUES ( pID, cID, new_score, new_correct, total_questions );
+	ELSE 
+		-- RAISE NOTICE 'old_score (%) exists. Updating old score...', old_score;
 
+		IF new_score > old_score OR ( new_score = old_score AND new_correct > old_correct ) THEN
+			UPDATE scores
+				SET score = new_score,
+					correctAnswers = new_correct
+				WHERE playerID = pID AND categoryID = cID;
+		END IF;
+	END IF;
 END;
 $$
 LANGUAGE 'plpgsql';
@@ -120,5 +126,31 @@ BEGIN
 	WHERE categories.categoryID = NEW.categoryID;
 
 	RETURN NEW;
+END;
+$_$ LANGUAGE 'plpgsql';
+
+DROP FUNCTION IF EXISTS check_legal_scores();
+CREATE OR REPLACE FUNCTION check_legal_scores() RETURNS TRIGGER AS $_$
+DECLARE
+	difference INT;
+	category_score INT;
+BEGIN
+	difference := NEW.totalAnswers - NEW.correctAnswers;
+
+	SELECT INTO category_score totalScore
+		FROM categories
+		WHERE categories.categoryID = NEW.categoryID;
+
+	IF difference >= 0 
+		AND (NEW.score <= category_score)
+		AND (NEW.score >= 0)
+		AND EXISTS(SELECT 1 FROM players WHERE NEW.playerID = players.playerID)
+		AND EXISTS(SELECT 1 FROM categories WHERE NEW.categoryID = categories.categoryID)
+	THEN
+		RETURN NEW;
+	ELSE
+		RAISE NOTICE '% is an invalid score. Rejecting insert...', NEW;
+		RETURN NULL;
+	END IF;
 END;
 $_$ LANGUAGE 'plpgsql';
