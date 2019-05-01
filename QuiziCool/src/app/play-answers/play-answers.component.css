@@ -24,11 +24,12 @@
 .question-text {
   font-size: 1.3em;
   font-weight: bold;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .question-submit {
   margin: 4px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,7 +51,7 @@
   background-color: #3ea815;
   background-image: linear-gradient(66deg, #3ea815 0%, #006633 84%);
   color: #f0f0f0;
-  width: 100%;
+  width: 97%;
   height: 45px;
   margin: 5px;
   border-radius: 4px;
