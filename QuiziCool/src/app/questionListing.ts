@@ -1,6 +1,6 @@
 export class QuestionListing {
-    categoryName: string;
+    categoryname: string;
     username: string;
-    categoryDesc: string;
-    questionCount: number;
+    categorydescription: string;
+    questions: number;
 }

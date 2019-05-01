@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from '../db.service'
 
 import { QuestionListing } from "../questionListing";
-import data from '../../assets/testQ.json';
+//import data from '../../assets/testQ.json';
 
 @Component({
   selector: 'app-questions',
@@ -11,11 +12,12 @@ import data from '../../assets/testQ.json';
 
 export class QuestionsComponent implements OnInit {
 
-  questionsList: QuestionListing[] = data;
+  questionsList: QuestionListing[];
 
-  constructor() { }
+  constructor(private db: DbService) { }
 
   ngOnInit() {
+    this.db.getCategories().subscribe(categories => this.questionsList = categories);
   }
 
 }
