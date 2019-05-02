@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-3 play-col">
-      <app-play-questions-column class="wide-play-col"></app-play-questions-column>
+      <app-play-questions-column class="wide-play-col" #playquestions></app-play-questions-column>
     </div>
     <div class="col-lg-6 play-col">
-      <app-play-answers class="wide-play-col"></app-play-answers>
+      <app-play-answers class="wide-play-col" [playQuestions]="playquestions" [playScore]="playscore"></app-play-answers>
     </div>
     <div class="col-lg-3 play-col">
-      <app-play-score class="wide-play-col"></app-play-score>
+      <app-play-score class="wide-play-col" #playscore></app-play-score>
     </div>
   </div>
 </div>

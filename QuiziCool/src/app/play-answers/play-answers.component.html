@@ -1,7 +1,7 @@
 <div class="play-answers-gameboard container">
   <div class="row">
     <div class="col-12 question-text">
-      Q#: Question Text
+      {{questions[currentQ].content}}
     </div>
   </div>
   <div class="row">
@@ -12,10 +12,10 @@
   </div>
   <div class="row">
     <div class="question-submit">
-      <button class="question-submit-button" value="A">{{"A: " + "value"}}</button>
-      <button class="question-submit-button" value="B">{{"B: " + "value"}}</button>
-      <button class="question-submit-button" value="C">{{"C: " + "value"}}</button>
-      <button class="question-submit-button" value="D">{{"D: " + "value"}}</button>
+      <button (click)="clickAnswer('A')" class="question-submit-button" value="A">{{"A: " + questions[currentQ].choiceA}}</button>
+      <button (click)="clickAnswer('B')" class="question-submit-button" value="B">{{"B: " + questions[currentQ].choiceB}}</button>
+      <button (click)="clickAnswer('C')" class="question-submit-button" value="C">{{"C: " + questions[currentQ].choiceC}}</button>
+      <button (click)="clickAnswer('D')" class="question-submit-button" value="D">{{"D: " + questions[currentQ].choiceD}}</button>
       <!-- <div class="input-group">
         <select class="custom-select" id="questionSubmissionLetter">
           <option selected>Choose...</option>

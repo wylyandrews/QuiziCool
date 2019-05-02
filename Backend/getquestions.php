@@ -17,6 +17,21 @@ $result = pg_query_params(
     array($categoryid)
 );
 
-print(json_encode(pg_fetch_all($result)));
+$rows = pg_fetch_all($result);
+//print var_dump($rows);
+$processed = array();
+for($i = 0; $i < count($rows); $i += 4) {
+    $q = new stdClass();
+    $q->choiceA = $rows[$i]['choice'];
+    $q->choiceB = $rows[$i+1]['choice'];
+    $q->choiceC = $rows[$i+2]['choice'];
+    $q->choiceD = $rows[$i+3]['choice'];
+    $q->content = $rows[$i]['content'];
+    $q->answer = $rows[$i]['answer'];
+    $q->score = $rows[$i]['score'];
+    array_push($processed, $q);
+}
+
+print(json_encode($processed));
 
 ?>

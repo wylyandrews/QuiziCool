@@ -6,9 +6,9 @@ export class Question {
     choiceD: string
     answer: string
     category: string
-    difficulty: number
+    score: number
 
-    constructor(content: string, choiceA: string, choiceB: string, choiceC: string, choiceD: string, answer: string, category: string, difficulty: number) {
+    constructor(content: string, choiceA: string, choiceB: string, choiceC: string, choiceD: string, answer: string, category: string, score: number) {
         this.content = content;
         this.choiceA = choiceA;
         this.choiceB = choiceB;
@@ -16,6 +16,6 @@ export class Question {
         this.choiceD = choiceD;
         this.answer = answer;
         this.category = category;
-        this.difficulty = difficulty;
+        this.score = score;
     }
 }
