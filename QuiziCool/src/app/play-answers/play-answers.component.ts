@@ -43,8 +43,6 @@ export class PlayAnswersComponent implements OnInit {
       //correct answer
       this.countCorrect++;
       this.score += Number(this.questions[this.currentQ].score);
-      console.log(this.questions[this.currentQ].score);
-      console.log('the new score is ' + this.score);
     }
     else {
       //wrong answer
@@ -55,9 +53,13 @@ export class PlayAnswersComponent implements OnInit {
     if(this.currentQ >= this.questions.length) {
       //end of quiz
       //this.db.addScore(this.username, this.categoryid, this.score);
-      this.router.navigateByUrl('/');
+      //modal stuff
+      //this.router.navigateByUrl('/');
+      //document.getElementById('displayScoreModal').setAttribute('display:', 'block');
+      document.getElementById("displayScoreModal").style.display = "block";
+      document.getElementById("displayScoreModal").style.opacity = "1";
+      
     }
-
     this.updateDisplay();
   }
 
@@ -65,7 +67,7 @@ export class PlayAnswersComponent implements OnInit {
 
     this.playQuestions.question = this.currentQ + 1;
     this.playQuestions.remaining = this.questions.length - this.currentQ;
-    this.playQuestions.ratio = this.countCorrect + "/" + this.countWrong;
+    this.playQuestions.ratio = (this.countCorrect + this.countWrong) + "/" + this.questions.length;
 
     this.playScore.displayScore = this.score;
   }

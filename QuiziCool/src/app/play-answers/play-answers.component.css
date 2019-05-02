@@ -62,4 +62,35 @@
   opacity: 0.85;
   border-color: #0f0f0f;
 }
+
+.modal {
+  background-color: #02070fbf;
+}
+
+.modal-content {
+  background-color: #0f0f0f;
+}
+
+.modal-dialog {
+  margin-top: 100px;
+}
+
+.close {
+  color: #f0f0f0;
+}
+
+.modal-header, .modal-footer {
+  border-color: #4f4f4f;
+}
+
+.mod-btn {
+  border: 1px rgba(10, 10, 10, 0.514) solid;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background-color: #3ea815;
+  background-image: linear-gradient(66deg, #3ea815 0%, #006633 84%);
+  color: #0f0f0f;
+}
 /*# sourceMappingURL=play-answers.component.css.map */
