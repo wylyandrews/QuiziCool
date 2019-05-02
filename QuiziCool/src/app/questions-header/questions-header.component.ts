@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from '../db.service';
+import { Question } from '../question';
 
 @Component({
   selector: 'app-questions-header',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionsHeaderComponent implements OnInit {
 
-  constructor() { }
+  //Modal
+  questionContent: string
+  choiceA: string
+  choiceB: string
+  choiceC: string
+  choiceD: string
+  answer: string
+  category: string
+  difficulty: string
+
+  constructor(private db: DbService) { }
 
   ngOnInit() {
+  }
+
+  saveChanges() {
+    var newQuestion = new Question(this.questionContent, this.choiceA, this.choiceB, this.choiceC, this.choiceD, this.answer, this.category, Number(this.difficulty));
+    console.log(newQuestion)
+    this.db.addQuestion(newQuestion).subscribe()
   }
 
 }
