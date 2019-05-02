@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http'
 import { Observable, of} from 'rxjs';
 
 import { QuestionListing } from './questionListing';
+import { Question } from './question';
+import { Score } from './score';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +18,21 @@ export class DbService {
   getCategories(): Observable<QuestionListing[]> {
     return this.http.get<QuestionListing[]>(this.baseUrl + 'getcategories.php');
   }
+
+  addQuestion(question: Question): Observable<Question> {
+    //var httpOptions = {
+    //  headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
+    //  //params: new HttpParams(question)
+    //};
+    return this.http.post<Question>(this.baseUrl + 'addquestion.php', question, {params: <any>question});
+  }
+
+  getScores(categoryid: number): Observable<Score[]> {
+    return this.http.get<Score[]>(this.baseUrl + 'getscores.php?categoryid='+categoryid);
+  }
+
+  getQuestions(categoryid: number): Observable<Question[]> {
+    return this.http.get<Question[]>(this.baseUrl + 'getquestions.php?categoryid='+categoryid);
+  }
+
 }

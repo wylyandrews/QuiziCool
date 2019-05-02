@@ -5,13 +5,15 @@
         Score
       </div>
       <div class="col-lg-12 score-stats score">
-        #
+        {{displayScore}}
       </div>
       <div class="col-lg-12 score-stats">
-        High Scores
+        High Scores 
       </div>
       <div class="col-lg-12 score-stats score">
-        #
+        <p *ngFor="let s of highScores">
+          {{s.username}}  -  {{s.score}}
+        </p>
       </div>
     </div>
   </div>

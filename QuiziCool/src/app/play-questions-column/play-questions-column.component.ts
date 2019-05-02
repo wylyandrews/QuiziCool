@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PlayAnswersComponent } from '../play-answers/play-answers.component';
 
 @Component({
   selector: 'app-play-questions-column',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./play-questions-column.component.css']
 })
 export class PlayQuestionsColumnComponent implements OnInit {
+
+  question: number;
+  remaining: number;
+  ratio: string;
 
   constructor() { }
 

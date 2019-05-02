@@ -4,7 +4,7 @@
 }
 
 body {
-  background: #0a0a09 url(http://www.transparenttextures.com/patterns/inspiration-geometry.png) repeat 0 0;
+  background: #0a0a09 url("assets/img/inspiration-geometry.png") repeat 0 0;
   -webkit-animation: slide 20s linear infinite;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f0f0f0;

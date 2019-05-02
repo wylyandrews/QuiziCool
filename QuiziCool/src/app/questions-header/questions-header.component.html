@@ -21,9 +21,17 @@
       </div>
       <div class="modal-body">
         <h5>Question Content</h5>
-        <textarea class="form-control" id="addQuestionContent" rows="5"></textarea>
+        <textarea class="form-control" id="addQuestionContent" rows="5" [(ngModel)]="questionContent"></textarea>
+        <h5>Choice A</h5>
+        <input class="form-control" type="text" id="choiceA" [(ngModel)]="choiceA">
+        <h5>Choice B</h5>
+        <input class="form-control" type="text" id="choiceB" [(ngModel)]="choiceB">
+        <h5>Choice C</h5>
+        <input class="form-control" type="text" id="choiceC" [(ngModel)]="choiceC">
+        <h5>Choice D</h5>
+        <input class="form-control" type="text" id="choiceD" [(ngModel)]="choiceD">
         <h5>Question Answer</h5>
-        <select class="custom-select" id="addQuestionLetter">
+        <select class="custom-select" id="addQuestionLetter" [(ngModel)]="answer">
           <option selected>Choose...</option>
           <option value="A">A</option>
           <option value="B">B</option>
@@ -31,17 +39,18 @@
           <option value="D">D</option>
         </select>
         <h5>Question Category</h5>
-        <input class="form-control" type="text" id="addQuestionCategory">
+        <input class="form-control" type="text" id="addQuestionCategory" [(ngModel)]="category">
         <h5>Question Difficulty</h5>
-        <select class="custom-select" id="addQuestionDiff">
+        <select class="custom-select" id="addQuestionDiff" [(ngModel)]="difficulty">
             <option selected>Choose...</option>
+            <option value="1">0 (5 Points)</option>
             <option value="1">1 (10 Points)</option>
             <option value="2">2 (20 Points)</option>
           </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary mod-btn" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary mod-btn">Save Changes</button>
+        <button type="button" class="btn btn-primary mod-btn" (click)="saveChanges()">Save Changes</button>
       </div>
     </div>
   </div>

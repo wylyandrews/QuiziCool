@@ -30,15 +30,15 @@
       </div>
       <div class="modal-body">
         <h5>Your Name?</h5>
-        <input class="form-control" type="text" id="playerName">
+        <input class="form-control" type="text" id="playerName" [(ngModel)]="username">
         <h5>Select Quiz</h5>
-        <select class="custom-select" id="categorySelection">
+        <select class="custom-select" id="categorySelection" [(ngModel)]="categoryid">
           <option selected>Choose...</option>
           <option *ngFor="let cat of questionsList" value={{cat.categoryid}}>{{cat.categoryname}}</option>
         </select>
       </div>
       <div class="modal-footer">
-        <button type="button" data-dismiss="modal" routerLink="/play" class="btn btn-primary">Go!</button>
+        <button (click)="startQuiz()" type="button" data-dismiss="modal" class="btn btn-primary">Go!</button>
       </div>
     </div>
   </div>
