@@ -18,7 +18,7 @@ export class PlayAnswersComponent implements OnInit {
   categoryid: number;
   username: string;
   
-  questions: Question[];
+  questions: Question[] = new Array();
 
   score: number = 0;
   currentQ: number = 0;
@@ -29,7 +29,7 @@ export class PlayAnswersComponent implements OnInit {
   constructor(private db: DbService, public router: Router) { }
 
   ngOnInit() {
-    console.log(window.history.state);
+
     this.categoryid = window.history.state.categoryid;
     this.username = window.history.state.username;
 
@@ -43,14 +43,15 @@ export class PlayAnswersComponent implements OnInit {
       //correct answer
       this.countCorrect++;
       this.score += Number(this.questions[this.currentQ].score);
+      console.log('added score: ' + Number(this.questions[this.currentQ].score));
+      console.log('currentQ: ' + this.currentQ);
     }
     else {
       //wrong answer
       this.countWrong++;
     }
-    this.currentQ++;
 
-    if(this.currentQ >= this.questions.length) {
+    if(this.currentQ + 1 == this.questions.length) {
       //end of quiz
       //this.db.addScore(this.username, this.categoryid, this.score);
       //modal stuff
@@ -58,8 +59,12 @@ export class PlayAnswersComponent implements OnInit {
       //document.getElementById('displayScoreModal').setAttribute('display:', 'block');
       document.getElementById("displayScoreModal").style.display = "block";
       document.getElementById("displayScoreModal").style.opacity = "1";
+      document.getElementById("scoreHack").innerHTML = String(this.score);
+      document.getElementById("scoreHack2").innerHTML = String(this.score);
       this.db.addScore(this.username, this.categoryid, this.score, this.countCorrect).subscribe();
     }
+
+    this.currentQ++;
     this.updateDisplay();
   }
 
