@@ -17,7 +17,7 @@ INSERT INTO players ( username )
 
 
 INSERT INTO difficulties( difficultyLevel, score )
-			 	 VALUES ( 0, 0 ),
+			 	 VALUES ( 0, 5 ),
 			 	 		( 1, 10 ),
 			 	 		( 2, 20 );
 
