@@ -35,4 +35,8 @@ export class DbService {
     return this.http.get(this.baseUrl + `addscore.php?username=${username}&categoryid=${categoryid}&score=${score}&numcorrect=${numcorrect}`)
   }
 
+  deleteCategory(categoryid: number) {
+    return this.http.get(this.baseUrl + `delcategory.php?categoryid=${categoryid}`);
+  }
+
 }

@@ -5,7 +5,7 @@
         <div class="row">
             <h2 class="col-6">{{listing.categoryname}}</h2>
             <div class="col-3"></div>
-            <div class="col-3"><button class="delete-listing-button">X</button></div>
+            <div class="col-3"><button class="delete-listing-button" (click)="deleteButton(listing.categoryid)">X</button></div>
         </div>
         <h4 class="listing-author">{{listing.username}}</h4>
         <p>{{listing.categorydescription}}</p>

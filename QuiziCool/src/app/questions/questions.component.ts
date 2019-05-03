@@ -20,4 +20,8 @@ export class QuestionsComponent implements OnInit {
     this.db.getCategories().subscribe(categories => this.questionsList = categories);
   }
 
+  deleteButton(categoryid: number) {
+    this.db.deleteCategory(categoryid).subscribe(() => this.db.getCategories().subscribe(categories => this.questionsList = categories));
+  }
+
 }
