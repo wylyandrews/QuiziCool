@@ -18,6 +18,8 @@ export class QuestionsHeaderComponent implements OnInit {
   answer: string
   category: string
   difficulty: string
+  description: string
+  author: string
 
   constructor(private db: DbService) { }
 
@@ -26,8 +28,7 @@ export class QuestionsHeaderComponent implements OnInit {
 
   saveChanges() {
     var newQuestion = new Question(this.questionContent, this.choiceA, this.choiceB, this.choiceC, this.choiceD, this.answer, this.category, Number(this.difficulty));
-    console.log(newQuestion)
-    this.db.addQuestion(newQuestion).subscribe()
+    this.db.addQuestion(newQuestion, this.author, this.description).subscribe(() => location.reload())
   }
 
 }

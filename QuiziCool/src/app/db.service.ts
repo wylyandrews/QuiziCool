@@ -19,8 +19,18 @@ export class DbService {
     return this.http.get<QuestionListing[]>(this.baseUrl + 'getcategories.php');
   }
 
-  addQuestion(question: Question): Observable<Question> {
-    return this.http.get<Question>(this.baseUrl + `addquestion.php?content=${question.content}&answer=${question.answer}&category=${question.category}&difficulty=${question.score}`);
+  addQuestion(question: Question, playername: string, description: string) {
+    return this.http.get(this.baseUrl + `addquestion.php?
+      content=${question.content}&
+      answer=${question.answer}&
+      category=${question.category}&
+      difficulty=${question.score}&
+      choiceA=${question.choiceA}&
+      choiceB=${question.choiceB}&
+      choiceC=${question.choiceC}&
+      choiceD=${question.choiceD}&
+      playername=${playername}&
+      description=${description}`);
   }
 
   getScores(categoryid: number): Observable<Score[]> {
