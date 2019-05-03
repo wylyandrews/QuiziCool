@@ -20,11 +20,7 @@ export class DbService {
   }
 
   addQuestion(question: Question): Observable<Question> {
-    //var httpOptions = {
-    //  headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-    //  //params: new HttpParams(question)
-    //};
-    return this.http.post<Question>(this.baseUrl + 'addquestion.php', question, {params: <any>question});
+    return this.http.get<Question>(this.baseUrl + `addquestion.php?content=${question.content}&answer=${question.answer}&category=${question.category}&difficulty=${question.score}`);
   }
 
   getScores(categoryid: number): Observable<Score[]> {
