@@ -31,4 +31,8 @@ export class DbService {
     return this.http.get<Question[]>(this.baseUrl + 'getquestions.php?categoryid='+categoryid);
   }
 
+  addScore(username: string, categoryid: number, score: number, numcorrect: number) {
+    return this.http.get(this.baseUrl + `addscore.php?username=${username}&categoryid=${categoryid}&score=${score}&numcorrect=${numcorrect}`)
+  }
+
 }

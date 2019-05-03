@@ -58,7 +58,7 @@ export class PlayAnswersComponent implements OnInit {
       //document.getElementById('displayScoreModal').setAttribute('display:', 'block');
       document.getElementById("displayScoreModal").style.display = "block";
       document.getElementById("displayScoreModal").style.opacity = "1";
-      
+      this.db.addScore(this.username, this.categoryid, this.score, this.countCorrect).subscribe();
     }
     this.updateDisplay();
   }
