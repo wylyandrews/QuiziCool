@@ -28,11 +28,10 @@ DECLARE
 	new_question_score INT;
 	new_category_score INT;
 BEGIN
-	SELECT INTO new_question_id MAX(questionID) FROM questions;
-	new_question_id := new_question_id + 1;
-
+	
 	INSERT INTO questions ( content, answer, categoryID, difficultyLevel )
-			   VALUES ( question_name, answer, category_id, diff );
+		VALUES ( question_name, answer, category_id, diff )
+		RETURNING questionID INTO new_question_id;
 
 	INSERT INTO questionChoices ( questionID, letter, choice )
 					 VALUES ( new_question_id, 'A', c_a ),
@@ -186,8 +185,8 @@ DECLARE
 	question_count INT;
 	question_score INT;
 BEGIN
-	RAISE NOTICE '% is the OLD', OLD;
-	RAISE NOTICE '% is the OLD.categoryID', OLD.categoryID;
+	-- RAISE NOTICE '% is the OLD', OLD;
+	-- RAISE NOTICE '% is the OLD.categoryID', OLD.categoryID;
 	SELECT INTO category_score totalScore
 		FROM categories
 		WHERE categories.categoryID = OLD.categoryID;
@@ -200,9 +199,9 @@ BEGIN
 		FROM difficulties
 		WHERE difficulties.difficultyLevel = OLD.difficultyLevel;
 
-	RAISE NOTICE '% is the question_count', question_count;
-	RAISE NOTICE '% is the category_score', category_score;
-	RAISE NOTICE '% is the question_score', question_score;
+	-- RAISE NOTICE '% is the question_count', question_count;
+	-- RAISE NOTICE '% is the category_score', category_score;
+	-- RAISE NOTICE '% is the question_score', question_score;
 
 	category_score := category_score - question_score;
 	question_count := question_count - 1;
