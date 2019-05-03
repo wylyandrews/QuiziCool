@@ -11,7 +11,7 @@ import { Score } from './score';
 })
 export class DbService {
 
-  readonly baseUrl = "http://students.cs.ndsu.nodak.edu/~dacolema/quizicool/"
+  readonly baseUrl = "https://students.cs.ndsu.nodak.edu/~dacolema/quizicool/"
 
   constructor(private http: HttpClient) { }
 
